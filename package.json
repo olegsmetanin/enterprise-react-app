@@ -1,0 +1,19 @@
+{
+  "name": "enterprise-react-app",
+  "version": "0.0.1",
+  "description": "Enterprise React Application boilerplate.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/olegsmetanin/enterprise-react-app"
+  },
+  "scripts": {
+    "clean": "echo",
+    "build": "echo",
+    "postinstall": "npmx install && npmx link",
+    "change": "npmx change"
+  },
+  "devDependencies": {
+    "@microsoft/npmx": "^1.3.0"
+  },
+  "license": "MIT"
+}

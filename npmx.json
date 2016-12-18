@@ -1,0 +1,18 @@
+{
+  "npmVersion": "3.10.9",
+  "npmxMinimumVersion": "1.1.0",
+  "nodeSupportedVersionRange": ">=4.3.0",
+  "commonFolder": "common",
+  "projectFolderMinDepth": 1,
+  "projectFolderMaxDepth": 999,
+  "projects": [
+    {
+      "packageName": "enterprise-react-app-vendors",
+      "projectFolder": "packages/vendors"
+    },
+    {
+      "packageName": "enterprise-react-app-components",
+      "projectFolder": "packages/components"
+    }
+  ]
+}
