@@ -141,7 +141,7 @@
             "js"
         ],
         "globals": {
-            "__TS_CONFIG__": "tsconfig.test.json"
+            "__TS_CONFIG__": "./tsconfig.test.json"
         }
     }
 }
