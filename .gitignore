@@ -101,9 +101,9 @@ package
 package-deps.json
 
 common/npm-local
-common/npmx-link.json
+common/rush-link.json
 common/last-install.*
-common/npmx-recycler
+common/rush-recycler
 
 !.gitkeep
 

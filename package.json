@@ -1,19 +1,25 @@
 {
-  "name": "enterprise-react-app",
-  "version": "0.0.1",
-  "description": "Enterprise React Application boilerplate.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/olegsmetanin/enterprise-react-app"
-  },
-  "scripts": {
-    "clean": "echo",
-    "build": "echo",
-    "postinstall": "npmx install && npmx link",
-    "change": "npmx change"
-  },
-  "devDependencies": {
-    "@microsoft/npmx": "^1.3.0"
-  },
-  "license": "MIT"
+    "name": "enterprise-react-app",
+    "version": "0.0.1",
+    "description": "Enterprise React Application boilerplate.",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/olegsmetanin/enterprise-react-app"
+    },
+    "scripts": {
+        "clean": "echo",
+        "build": "echo",
+        "pkg:install": "rush install && rush link",
+        "pkg:link": "rush link",
+        "pkg:gen": "rush generate",
+        "vendors:build": "cd packages/vendors && npm run build",
+        "components:run": "cd packages/components && npm run start",
+        "components:test": "cd packages/components && npm run test",
+        "components:storybook": "cd packages/components && npm run storybook"
+    },
+    "devDependencies": {
+        "@microsoft/rush": "^1.4.0",
+        "cross-env": "^1.0.7"
+    },
+    "license": "MIT"
 }
