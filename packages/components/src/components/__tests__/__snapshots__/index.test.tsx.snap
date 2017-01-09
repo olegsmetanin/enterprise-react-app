@@ -1,0 +1,7 @@
+exports[`test renders correctly 1`] = `
+<button
+  className="btn btn-default"
+  type="submit">
+  qwe
+</button>
+`;

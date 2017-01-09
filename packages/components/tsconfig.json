@@ -31,7 +31,7 @@
         "node_modules",
         "dist",
         "test",
-        "**/__stories__/**/*",
-        "**/__tests__/**/*"
+        "**/__tests__/*",
+        "**/__stories__/*"
     ]
 }

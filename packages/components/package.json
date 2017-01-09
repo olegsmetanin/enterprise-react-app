@@ -134,6 +134,8 @@
         "transform": {
             ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
         },
+        "testPathDirs": ["<rootDir>"],
+        "testPathIgnorePatterns": ["<rootDir>/node_modules/"],
         "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
         "moduleFileExtensions": [
             "ts",

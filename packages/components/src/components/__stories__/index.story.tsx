@@ -5,7 +5,6 @@ import {storiesOf, action} from '@kadira/storybook';
 
 declare var module: any;
 
-
 storiesOf('Welcome', module)
   .add('to Storybook', () => (
     <button
