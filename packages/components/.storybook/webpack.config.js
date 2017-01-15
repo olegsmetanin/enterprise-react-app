@@ -46,6 +46,6 @@ module.exports = {
     },
     plugins: [
         // Output extracted CSS to a file
-        new ExtractTextPlugin('./styles.css')
+        new ExtractTextPlugin('./default.css')
     ]
 }

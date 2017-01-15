@@ -1,6 +1,7 @@
 exports[`test renders correctly 1`] = `
 <button
-  className="btn btn-default"
+  className="btn btn-default undefined"
+  onClick={undefined}
   type="submit">
   qwe
 </button>
