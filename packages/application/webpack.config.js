@@ -1,10 +1,9 @@
 'use strict';
 
 var isProduction = process.env.NODE_ENV === 'production';
-var PORT = 8080
 
 console.log('..running ' + process.env.NODE_ENV + ' build');
-console.log(process.argv);
+
 var path = require('path'),
     webpack = require('webpack'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
@@ -12,13 +11,11 @@ var path = require('path'),
 
 var config = {
     entry: {
-        components: path.join(__dirname, './src/index.tsx')
+        index: path.join(__dirname, './src/WebClient/index.tsx')
     },
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.join(__dirname, 'dist/WebClient'),
         filename: '[name].js',
-        library: 'components',
-        libraryTarget: 'umd'
     },
     module: {
         preLoaders: [{
@@ -60,20 +57,6 @@ var config = {
             ]
         }])
     },
-    externals: {
-        "react": {
-            root: 'React',
-            commonjs2: 'react',
-            commonjs: 'react',
-            amd: 'react'
-        },
-        'react-dom': {
-            root: 'ReactDOM',
-            commonjs2: 'react-dom',
-            commonjs: 'react-dom',
-            amd: 'react-dom'
-        }
-    },
     ts: {
         compiler: 'typescript',
         configFileName: path.resolve(__dirname, './tsconfig.json')
@@ -96,7 +79,16 @@ var config = {
         new webpack.HotModuleReplacementPlugin(),
         //https://github.com/moment/moment/issues/1435#issuecomment-232687733
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin('[name].css'),
+        new webpack.DllReferencePlugin({
+            context: '.',
+            manifest: require('./dist/WebClient/vendors.dll-manifest.json'),
+        }),
+        new webpack.DllReferencePlugin({
+            context: '.',
+            manifest: require('./dist/WebClient/components.dll-manifest.json'),
+
+        }),
     ].concat(isProduction ? [
         new webpack.DefinePlugin({
             'process.env': {

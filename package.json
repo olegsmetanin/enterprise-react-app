@@ -12,8 +12,11 @@
         "pkg:install": "rush install && rush link",
         "pkg:link": "rush link",
         "pkg:gen": "rush generate",
-        "vendors:build": "cd packages/vendors && npm run build",
-        "components:run": "cd packages/components && npm run start",
+        "app:vendors:build": "cd packages/application && npm run vendors:build",
+        "app:components:build": "cd packages/application && npm run components:build",
+        "app:server:watch": "cd packages/application && npm run server:watch",
+        "app:client:watch": "cd packages/application && npm run client:watch",
+        "components:build": "cd packages/components && npm run build",
         "components:test": "cd packages/components && npm run test",
         "components:storybook": "cd packages/components && npm run storybook"
     },

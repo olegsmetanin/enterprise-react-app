@@ -6,7 +6,12 @@
     "projectFolderMinDepth": 1,
     "projectFolderMaxDepth": 999,
     "projects": [{
-        "packageName": "enterprise-react-app-components",
-        "projectFolder": "packages/components"
-    }]
+            "packageName": "enterprise-react-app-components",
+            "projectFolder": "packages/components"
+        },
+        {
+            "packageName": "enterprise-react-app-application",
+            "projectFolder": "packages/application"
+        }
+    ]
 }

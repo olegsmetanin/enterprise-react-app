@@ -12,13 +12,19 @@ var path = require('path'),
 
 var config = {
     entry: {
-        components: path.join(__dirname, './src/index.tsx')
+        vendors: [
+            'react',
+            'react-dom',
+            'react-router',
+            'redux',
+            'react-redux',
+            'styled-components'
+        ]
     },
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: '[name].js',
-        library: 'components',
-        libraryTarget: 'umd'
+        path: path.join(__dirname, 'dist/WebClient'),
+        filename: '[name].dll.js',
+        library: 'vendors'
     },
     module: {
         preLoaders: [{
@@ -48,31 +54,17 @@ var config = {
             { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" }
         ].concat(isProduction ? [{
             test: /\.less$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!less-loader'),
+            loader: 'style-loader!css-loader!postcss-loader!less-loader',
             include: [
                 path.join(__dirname),
             ]
         }] : [{
             test: /\.less$/,
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader!less-loader'),
+            loader: 'style-loader!css-loader!postcss-loader!less-loader',
             include: [
                 path.join(__dirname),
             ]
         }])
-    },
-    externals: {
-        "react": {
-            root: 'React',
-            commonjs2: 'react',
-            commonjs: 'react',
-            amd: 'react'
-        },
-        'react-dom': {
-            root: 'ReactDOM',
-            commonjs2: 'react-dom',
-            commonjs: 'react-dom',
-            amd: 'react-dom'
-        }
     },
     ts: {
         compiler: 'typescript',
@@ -96,7 +88,10 @@ var config = {
         new webpack.HotModuleReplacementPlugin(),
         //https://github.com/moment/moment/issues/1435#issuecomment-232687733
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-        new ExtractTextPlugin('[name].css')
+        new webpack.DllPlugin({
+            path: path.join(__dirname, "dist/WebClient", "[name].dll-manifest.json"),
+            name: "[name]"
+        })
     ].concat(isProduction ? [
         new webpack.DefinePlugin({
             'process.env': {

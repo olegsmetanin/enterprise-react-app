@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import styled from "styled-components"
 
-interface ButtonProps {
+export interface ButtonProps {
   onClick?: any
   className?: any
 };

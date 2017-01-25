@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-interface TextEditProps {
+export interface TextEditProps {
   value: any
   onChange?: (e) => void
 };
