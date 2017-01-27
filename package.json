@@ -9,19 +9,20 @@
     "scripts": {
         "clean": "echo",
         "build": "echo",
+        "postinstall": "rush install && rush link",
         "pkg:install": "rush install && rush link",
-        "pkg:link": "rush link",
-        "pkg:gen": "rush generate",
-        "app:vendors:build": "cd packages/application && npm run vendors:build",
-        "app:components:build": "cd packages/application && npm run components:build",
-        "app:server:watch": "cd packages/application && npm run server:watch",
-        "app:client:watch": "cd packages/application && npm run client:watch",
-        "components:build": "cd packages/components && npm run build",
-        "components:test": "cd packages/components && npm run test",
-        "components:storybook": "cd packages/components && npm run storybook"
+        "pkg:gen": "rush generate && rush link",
+        "api:check": "cd packages/api && npm run check",
+        "webcomponents:build": "cd packages/webcomponents && npm run build",
+        "webcomponents:test": "cd packages/webcomponents && npm run test",
+        "webcomponents:storybook": "cd packages/webcomponents && npm run storybook",
+        "webclient:vendors:build": "cd packages/webclient && npm run vendors:build",
+        "webclient:webcomponents:build": "cd packages/webclient && npm run webcomponents:build",
+        "webclient:watch": "cd packages/webclient && npm run watch",
+        "server:watch": "cd packages/server && npm run watch"
     },
     "devDependencies": {
-        "@microsoft/rush": "^1.4.0",
+        "@microsoft/rush": "1.5.1",
         "cross-env": "^1.0.7"
     },
     "license": "MIT"

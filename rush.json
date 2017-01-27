@@ -6,12 +6,20 @@
     "projectFolderMinDepth": 1,
     "projectFolderMaxDepth": 999,
     "projects": [{
-            "packageName": "enterprise-react-app-components",
-            "projectFolder": "packages/components"
+            "packageName": "enterprise-react-app-webcomponents",
+            "projectFolder": "packages/webcomponents"
         },
         {
-            "packageName": "enterprise-react-app-application",
-            "projectFolder": "packages/application"
+            "packageName": "enterprise-react-app-webclient",
+            "projectFolder": "packages/webclient"
+        },
+        {
+            "packageName": "enterprise-react-app-server",
+            "projectFolder": "packages/server"
+        },
+        {
+            "packageName": "enterprise-react-app-api",
+            "projectFolder": "packages/api"
         }
     ]
 }
