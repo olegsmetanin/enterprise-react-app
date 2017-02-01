@@ -19,7 +19,9 @@
         "webclient:vendors:build": "cd packages/webclient && npm run vendors:build",
         "webclient:webcomponents:build": "cd packages/webclient && npm run webcomponents:build",
         "webclient:watch": "cd packages/webclient && npm run watch",
-        "server:watch": "cd packages/server && npm run watch"
+        "server:watch": "cd packages/server && npm run watch",
+        "server:db:init": "cd packages/server && npm run db:init",
+        "server:tests": "cd packages/server && npm run tests"
     },
     "devDependencies": {
         "@microsoft/rush": "1.5.1",

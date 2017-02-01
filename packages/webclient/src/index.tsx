@@ -16,4 +16,5 @@ ReactDOM.render(<div>QWE
     >
       Button
     </Button>
+    <a href="/login/facebook">FB</a>
 </div>, document.getElementById('app'))

@@ -1,8 +1,8 @@
 {
     "version": "2.0.0",
     "compilerOptions": {
-        "declaration": true,
         "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
         "jsx": "react",
         "module": "commonjs",
         "moduleResolution": "node",
@@ -13,8 +13,11 @@
         "removeComments": false,
         "sourceMap": true,
         "stripInternal": true,
-        "target": "es5",
-        "baseUrl": "./",
+        "types": ["reflect-metadata"],
+        "target": "es6",
+        "lib": ["es2015", "dom"],
+        "outDir": "dist/",
+        "baseUrl": "./src",
         "paths": {
             "*": [
                 "*"
