@@ -66,7 +66,7 @@ var config = {
 
     resolve: {
         root: [
-            path.resolve(__dirname),
+            path.resolve(__dirname, './src'),
         ],
         extensions: ['', '.js', '.ts', '.tsx']
     },

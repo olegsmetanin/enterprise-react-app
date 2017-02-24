@@ -1,7 +1,29 @@
+import {
+  inject,
+  injectable
+} from 'inversify'
+
 import * as passport from 'passport'
 import {Strategy as FacebookStrategy} from 'passport-facebook'
 
+import {UserFind} from 'Commands/User/UserFind'
+import {UserCreate} from 'Commands/User/UserCreate'
+
+import {ETypes} from 'DI/ETypes'
+import {IExec} from 'Core/API'
+import {EProviderTypes} from 'Auth/API'
+
+@injectable()
 export class Auth {
+
+  @inject(ETypes.exec)
+  private exec: IExec
+
+  @inject(ETypes.UserFind)
+  private userFind: UserFind
+
+  @inject(ETypes.UserCreate)
+  private userCreate: UserCreate
 
   connect(app) {
 
@@ -17,20 +39,34 @@ export class Auth {
         clientSecret: FACEBOOK_APP_SECRET,
         callbackURL: '//' + DOMAIN + '/login/facebook/callback'
     },
-    (accessToken, refreshToken, profile, done) => {
-        console.log('profile', profile)
-        return done( null, profile );
+    async (accessToken, refreshToken, profile, done) => {
+        // console.log('profile', profile)
+        const provider_user_id = profile.id
+        const provider = EProviderTypes.facebook
+        let rsUser = await this.userFind
+            .with({provider_user_id, provider})
+            .execute()
+        if (!rsUser) {
+          const display_name = profile.displayName
+          const user_id = await this.userCreate
+            .with({display_name, provider_user_id, provider})
+            .execute()
+          rsUser = await this.userFind
+            .with({id: user_id})
+            .execute()
+        }
+        return done(null, rsUser)
     }))
 
     passport.serializeUser((user: any, done) => {
         done(null, user.id)
     })
 
-    passport.deserializeUser((id, done) => {
-        done(null, {id: id, qwe:'qwe'})
-        // User.findById(id, function(err, user) {
-        //     done(err, user)
-        // }
+    passport.deserializeUser(async (id: string, done) => {
+        const rsUser = await this.userFind
+            .with({id})
+            .execute()
+        done(null, rsUser)
     })
 
     app.get('/login/facebook', passport.authenticate('facebook'))

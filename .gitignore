@@ -71,6 +71,7 @@ bin/
 .idea
 /.settings/
 OneDrive.sln.ide/*
+.vscode/
 
 # NPM Install Temp
 __temp/

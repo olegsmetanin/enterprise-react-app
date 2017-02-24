@@ -1,0 +1,4 @@
+
+export const ENTITIES_UPDATE = 'ENTITIES_UPDATE'
+
+export const ENTITIES_REMOVE = 'ENTITIES_REMOVE'
